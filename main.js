@@ -1,6 +1,17 @@
-const fetch = require('node-fetch');
+const api_url = 'https://api.pdfendpoint.com/v1/convert';
 
-const url = 'https://api.pdfendpoint.com/v1/convert';
+const book_url = "https://shamela.ws/book/6387";
+let ended = false;
+
+let index = 1;
+while (!ended) {	
+  let page_url = book_url + "/" + index;
+	
+	
+	
+}
+
+let html 
 
 const options = {
   method: "POST",
@@ -9,10 +20,9 @@ const options = {
 	"Authorization": "Bearer 4a9d3c4c83eb6998747d94ff96885957f7dd7bbc61"
   },
   body: JSON.stringify({
-	"url": "https://en.wikipedia.org/wiki/PDF",
+	 "html": "";
 	"orientation": "vertical",
 	"page_size": "A4",
-	"css": ".vector-menu-content{\n  display:none !important;\n}\n\n.vector-toc-pinned-container{\n  display:none !important;\n  height:0px;\n  overflow:hidden;\n}\n\n.mw-table-of-contents-container{\n  display:none !important;\n\n}\n\n",
 	"http_headers": "{\n\t\"cache-control\": \"max-age=0\"\n}",
 	"viewport ": "970x1400",
 	"use_print_media ": true,
@@ -25,7 +35,7 @@ const options = {
   })
 };
 
-fetch(url, options)
+fetch(api_url, options)
   .then(res => res.json())
   .then(json => console.log(json))
   .catch(err => console.error('error:' + err));
